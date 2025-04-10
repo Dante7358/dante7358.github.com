@@ -1,23 +1,10 @@
 <!DOCTYPE html>
-<html>
+<html lang="it">
 <head>
-	<meta http-equiv="content-type" content="text/html; charset=utf-8"/>
-	<title></title>
-	<meta name="generator" content="LibreOffice 24.8.4.2 (Linux)"/>
-	<meta name="created" content="00:00:00"/>
-	<meta name="changed" content="00:00:00"/>
-	<style type="text/css">
-		@page { size: 8.27in 11.69in; margin: 0.79in }
-		p { line-height: 115%; margin-bottom: 0.1in; background: transparent }
-		pre { font-family: "Liberation Mono", monospace; font-size: 10pt; background: transparent }
-	</style>
-</head>
-<body lang="en-US" link="#000080" vlink="#800000" dir="ltr"><pre>&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;it&quot;&gt;
-&lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot;&gt;
-    &lt;title&gt;Dante's Inferno Adventure&lt;/title&gt;
-    &lt;style&gt;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dante's Inferno Adventure</title>
+    <style>
         * {
             margin: 0;
             padding: 0;
@@ -51,7 +38,6 @@
             transition: transform 0.1s ease-out;
         }
 
-        /* Updated level 2 background with new image */
         .level-two-background {
             background-image: url('https://i.postimg.cc/R0BxKp7p/39c65714-400a-4756-b649-09ed580d2ca1.png') !important;
             background-size: contain;
@@ -59,7 +45,6 @@
             background-color: #000000 !important;
         }
        
-        /* Updated level 3 background with new image */
         .level-three-background {
             background-image: url('https://i.postimg.cc/fbxgsw0B/d685965a-3452-435f-9664-f202d5e53633.jpg') !important;
             background-size: contain;
@@ -116,7 +101,6 @@
             height: 95px;
         }
        
-        /* Level 2 enemy styles */
         .level-two-enemy-1 {
             background-image: url('https://i.postimg.cc/1zdRkz6h/2-removebg-preview.png') !important;
             width: 120px !important;
@@ -141,7 +125,6 @@
             height: 120px !important;
         }
 
-        /* New level 3 enemy styles */
         .level-three-enemy-1 {
             background-image: url('https://i.postimg.cc/Qx42Yxp7/Cattura-removebg-preview-7.png') !important;
             width: 120px !important;
@@ -176,12 +159,10 @@
             animation: portalPulse 1.5s infinite alternate;
         }
 
-        /* Different portal for level 1 */
         .level-one-portal {
             background-image: url('https://i.postimg.cc/sBHkdx66/portal.jpg') !important;
         }
 
-        /* Regular portal for other levels */
         .other-level-portal {
             background-image: url('https://i.postimg.cc/jWvCgFnH/portal.png') !important;
         }
@@ -378,7 +359,6 @@
             box-shadow: 0 0 5px #ff0000;
         }
        
-        /* Final image overlay for level 3 completion */
         #finalImage {
             position: fixed;
             top: 0;
@@ -391,45 +371,155 @@
             z-index: 150;
             display: none;
         }
-    &lt;/style&gt;
-&lt;/head&gt;
-&lt;body&gt;
-    &lt;div id=&quot;gameContainer&quot;&gt;
-        &lt;div id=&quot;backgroundLayer&quot;&gt;&lt;/div&gt;
-       
-        &lt;div id=&quot;startScreen&quot;&gt;
-            &lt;h1&gt;Dante's Adventure&lt;/h1&gt;
-            &lt;p&gt;Aiuta Dante a attraversare l'Inferno evitando i demoni!&lt;/p&gt;
-           
-            &lt;div id=&quot;characterDisplay&quot;&gt;
-                &lt;img id=&quot;danteChar&quot; src=&quot;https://i.postimg.cc/NfDdpJvP/Senza-titolo-3-20250310144624.png&quot; alt=&quot;Dante&quot;&gt;
-                &lt;img id=&quot;demonChar&quot; src=&quot;https://i.postimg.cc/hPd7dpmj/Senza-titolo-2-20250224154443.png&quot; alt=&quot;Demone&quot;&gt;
-            &lt;/div&gt;
-           
-            &lt;p class=&quot;instructions&quot;&gt;Premi ENTER per iniziare&lt;/p&gt;
-        &lt;/div&gt;
 
-        &lt;div id=&quot;gameStats&quot;&gt;
-            &lt;div&gt;PUNTEGGIO: &lt;span id=&quot;scoreDisplay&quot;&gt;0&lt;/span&gt;&lt;/div&gt;
-            &lt;div&gt;MONDO: &lt;span id=&quot;worldDisplay&quot;&gt;1-1&lt;/span&gt;&lt;/div&gt;
-            &lt;div&gt;TEMPO: &lt;span id=&quot;timeDisplay&quot;&gt;400&lt;/span&gt;&lt;/div&gt;
-            &lt;div id=&quot;livesContainer&quot;&gt;VITE: &lt;span id=&quot;livesDisplay&quot;&gt;&lt;/span&gt;&lt;/div&gt;
-        &lt;/div&gt;
+        /* Mobile controls */
+        #mobileControls {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        .mobile-button {
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: 2px solid #4a4a4a;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            font-size: 24px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            touch-action: manipulation;
+        }
+
+        #leftButton {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+        }
+
+        #rightButton {
+            position: absolute;
+            bottom: 20px;
+            left: 100px;
+        }
+
+        #jumpButton {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+        }
+
+        #runButton {
+            position: absolute;
+            bottom: 20px;
+            right: 100px;
+        }
+
+        @media (max-width: 768px) {
+            #mobileControls {
+                display: block;
+            }
+            
+            #controls {
+                display: none;
+            }
+            
+            #gameStats {
+                font-size: 18px;
+            }
+            
+            #startScreen h1 {
+                font-size: 40px;
+            }
+            
+            #startScreen p {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="gameContainer">
+        <div id="backgroundLayer"></div>
        
-        &lt;div id=&quot;controls&quot;&gt;
+        <div id="startScreen">
+            <h1>Dante's Adventure</h1>
+            <p>Aiuta Dante a attraversare l'Inferno evitando i demoni!</p>
+           
+            <div id="characterDisplay">
+                <img id="danteChar" src="https://i.postimg.cc/NfDdpJvP/Senza-titolo-3-20250310144624.png" alt="Dante" />
+                <img id="demonChar" src="https://i.postimg.cc/hPd7dpmj/Senza-titolo-2-20250224154443.png" alt="Demone" />
+            </div>
+           
+            <p class="instructions">Premi ENTER per iniziare</p>
+        </div>
+
+        <div id="gameStats">
+            <div>PUNTEGGIO: <span id="scoreDisplay">0</span></div>
+            <div>MONDO: <span id="worldDisplay">1-1</span></div>
+            <div>TEMPO: <span id="timeDisplay">400</span></div>
+            <div id="livesContainer">VITE: <span id="livesDisplay"></span></div>
+        </div>
+       
+        <div id="controls">
             ← → per muoversi | SPAZIO per saltare | SHIFT per correre
-        &lt;/div&gt;
+        </div>
        
-        &lt;button id=&quot;soundButton&quot;&gt;🔊&lt;/button&gt;
+        <div id="mobileControls">
+            <button id="leftButton" class="mobile-button">←</button>
+            <button id="rightButton" class="mobile-button">→</button>
+            <button id="jumpButton" class="mobile-button">↑</button>
+            <button id="runButton" class="mobile-button">R</button>
+        </div>
        
-        &lt;div id=&quot;debugInfo&quot;&gt;
-            Screen: &lt;span id=&quot;screenPositionDisplay&quot;&gt;0&lt;/span&gt;
-        &lt;/div&gt;
-    &lt;/div&gt;
+        <button id="soundButton">🔊</button>
+       
+        <div id="debugInfo">
+            Screen: <span id="screenPositionDisplay">0</span>
+        </div>
 
-    &lt;script&gt;
+        <div id="finalImage"></div>
+    </div>
+
+    <script>
         // Wait for DOM to fully load
         document.addEventListener('DOMContentLoaded', function() {
+            // Preload images to prevent loading delays
+            const imagesToPreload = [
+                'https://i.postimg.cc/FRnyFwQF/fdaf6de2-458b-4e18-8d9d-d3a0a08f6158.png',
+                'https://i.postimg.cc/R0BxKp7p/39c65714-400a-4756-b649-09ed580d2ca1.png',
+                'https://i.postimg.cc/fbxgsw0B/d685965a-3452-435f-9664-f202d5e53633.jpg',
+                'https://i.postimg.cc/NfDdpJvP/Senza-titolo-3-20250310144624.png',
+                'https://i.postimg.cc/hPd7dpmj/Senza-titolo-2-20250224154443.png',
+                'https://i.postimg.cc/90qzyQrS/Senza-titolo-2-20250224154252.png',
+                'https://i.postimg.cc/4d0mK9NV/Senza-titolo-2-20250224154646.png',
+                'https://i.postimg.cc/1zdRkz6h/2-removebg-preview.png',
+                'https://i.postimg.cc/VdBG6yqt/3-removebg-preview.png',
+                'https://i.postimg.cc/K1RS6vTf/4-removebg-preview.png',
+                'https://i.postimg.cc/mz62YFNx/5-removebg-preview.png',
+                'https://i.postimg.cc/Qx42Yxp7/Cattura-removebg-preview-7.png',
+                'https://i.postimg.cc/XqNPxTqx/Senza-titolo-4-20250310150944.png',
+                'https://i.postimg.cc/NjKW3q4z/Cattura-removebg-preview-6.png',
+                'https://i.postimg.cc/bNB5HVhH/2222-removebg-preview.png',
+                'https://i.postimg.cc/sBHkdx66/portal.jpg',
+                'https://i.postimg.cc/jWvCgFnH/portal.png',
+                'https://i.postimg.cc/fLnbd73s/b5a34228-cfa9-47e3-8a87-8a7b7aa9d1aa.png'
+            ];
+            
+            function preloadImages() {
+                imagesToPreload.forEach(imgSrc => {
+                    const img = new Image();
+                    img.src = imgSrc;
+                });
+            }
+            
+            preloadImages();
+
             // Get DOM elements
             const startScreen = document.getElementById('startScreen');
             const gameContainer = document.getElementById('gameContainer');
@@ -440,10 +530,18 @@
             const timeDisplay = document.getElementById('timeDisplay');
             const worldDisplay = document.getElementById('worldDisplay');
             const soundButton = document.getElementById('soundButton');
+            const finalImage = document.getElementById('finalImage');
+            
+            // Mobile controls
+            const leftButton = document.getElementById('leftButton');
+            const rightButton = document.getElementById('rightButton');
+            const jumpButton = document.getElementById('jumpButton');
+            const runButton = document.getElementById('runButton');
            
             let player, gameLoopRunning = false;
             let gameElements = [];
             let timerInterval;
+            let animationFrameId;
            
             // Game variables
             let lives = 15;
@@ -455,7 +553,7 @@
             let isFalling = false;
             let jumpHeight = 0;
             let jumpMax = 150;
-            let moveSpeed = 10; // Reduced from 10 to 5 to fix movement speed
+            let moveSpeed = 8; // Adjusted for better gameplay
             let facingRight = true;
             let score = 0;
             let timeRemaining = 400;
@@ -471,8 +569,8 @@
             let screenWidth = viewportWidth;
            
             // Player position constraints
-            let playerMinX = 50; // Minimum X position for player (left edge)
-            let playerMaxX = viewportWidth / 2; // Maximum X position for player (center of screen)
+            let playerMinX = 50; 
+            let playerMaxX = viewportWidth / 2;
            
             // Level 1 demon types and positions
             const demonTypes = [
@@ -481,7 +579,7 @@
                 { type: 3, url: 'https://i.postimg.cc/4d0mK9NV/Senza-titolo-2-20250224154646.png', speed: 1.6 }
             ];
            
-            // Level 2 demon types with new images
+            // Level 2 demon types
             const level2DemonTypes = [
                 { type: 1, url: 'https://i.postimg.cc/1zdRkz6h/2-removebg-preview.png', speed: 0.8, class: 'level-two-enemy-1' },
                 { type: 2, url: 'https://i.postimg.cc/VdBG6yqt/3-removebg-preview.png', speed: 1.2, class: 'level-two-enemy-2' },
@@ -489,7 +587,7 @@
                 { type: 4, url: 'https://i.postimg.cc/mz62YFNx/5-removebg-preview.png', speed: 1.4, class: 'level-two-enemy-4' }
             ];
            
-            // Level 3 demon types with new images
+            // Level 3 demon types
             const level3DemonTypes = [
                 { type: 1, url: 'https://i.postimg.cc/Qx42Yxp7/Cattura-removebg-preview-7.png', speed: 0.8, class: 'level-three-enemy-1' },
                 { type: 2, url: 'https://i.postimg.cc/XqNPxTqx/Senza-titolo-4-20250310150944.png', speed: 1.2, class: 'level-three-enemy-2' },
@@ -512,7 +610,7 @@
             // Event listeners for keyboard
             function setupKeyboardListeners() {
                 document.addEventListener('keydown', function(event) {
-                    if (event.key === 'Enter' &amp;&amp; startScreen.style.display !== 'none') {
+                    if (event.key === 'Enter' && startScreen.style.display !== 'none') {
                         startGame();
                         return;
                     }
@@ -531,12 +629,58 @@
                     if (event.key === ' ' || event.key === 'Space') keysPressed.Space = false;
                     if (event.key === 'Shift') keysPressed.ShiftLeft = false;
                 });
+                
+                // Setup mobile controls
+                setupMobileControls();
+            }
+            
+            // Setup mobile controls
+            function setupMobileControls() {
+                // Left button
+                leftButton.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    keysPressed.ArrowLeft = true;
+                });
+                leftButton.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    keysPressed.ArrowLeft = false;
+                });
+                
+                // Right button
+                rightButton.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    keysPressed.ArrowRight = true;
+                });
+                rightButton.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    keysPressed.ArrowRight = false;
+                });
+                
+                // Jump button
+                jumpButton.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    keysPressed.Space = true;
+                });
+                jumpButton.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    keysPressed.Space = false;
+                });
+                
+                // Run button
+                runButton.addEventListener('touchstart', function(e) {
+                    e.preventDefault();
+                    keysPressed.ShiftLeft = true;
+                });
+                runButton.addEventListener('touchend', function(e) {
+                    e.preventDefault();
+                    keysPressed.ShiftLeft = false;
+                });
             }
            
             // Initialize lives display
             function initLives() {
                 livesDisplay.innerHTML = '';
-                for (let i = 0; i &lt; lives; i++) {
+                for (let i = 0; i < lives; i++) {
                     const lifeIcon = document.createElement('span');
                     lifeIcon.className = 'life-icon';
                     livesDisplay.appendChild(lifeIcon);
@@ -546,13 +690,13 @@
             // Update lives display
             function updateLives() {
                 livesDisplay.innerHTML = '';
-                for (let i = 0; i &lt; lives; i++) {
+                for (let i = 0; i < lives; i++) {
                     const lifeIcon = document.createElement('span');
                     lifeIcon.className = 'life-icon';
                     livesDisplay.appendChild(lifeIcon);
                 }
                
-                if (lives &lt;= 0) {
+                if (lives <= 0) {
                     gameOver();
                 }
             }
@@ -560,8 +704,8 @@
             // Create a demon with specific type
             function createDemon(typeIndex, xPosition) {
                 if (currentLevel === 1) {
-                    // Limit to max 3 demons (one of each type)
-                    if (activeDemons.some(demon =&gt; demon.type === demonTypes[typeIndex].type &amp;&amp; demon.active)) {
+                    // Check if this type of demon already exists and is active
+                    if (activeDemons.some(demon => demon.type === demonTypes[typeIndex].type && demon.active)) {
                         return null;
                     }
                    
@@ -591,7 +735,7 @@
                     };
                 } else if (currentLevel === 2) {
                     // For level 2, use the new demon types
-                    if (activeDemons.some(demon =&gt; demon.type === level2DemonTypes[typeIndex].type &amp;&amp; demon.active)) {
+                    if (activeDemons.some(demon => demon.type === level2DemonTypes[typeIndex].type && demon.active)) {
                         return null;
                     }
                    
@@ -619,9 +763,10 @@
                         active: true,
                         relativeX: xPosition - backgroundPos
                     };
-                } else if (currentLevel === 3) {
-                    // For level 3, use the new demon types
-                    if (activeDemons.some(demon =&gt; demon.type === level3DemonTypes[typeIndex].type &amp;&amp; demon.active)) {
+                }
+                 else if (currentLevel === 3) {
+                    // For level 3, use the level 3 demon types
+                    if (activeDemons.some(demon => demon.type === level3DemonTypes[typeIndex].type && demon.active)) {
                         return null;
                     }
                    
@@ -650,478 +795,533 @@
                         relativeX: xPosition - backgroundPos
                     };
                 }
+                
+                return null;
             }
            
-            // Check for demons based on screen position
-            function manageDemons() {
-                // Level 1 demons
+            // Create a portal at the specific position
+            function createPortal(xPosition) {
+                if (portalObject && portalObject.element) {
+                    gameContainer.removeChild(portalObject.element);
+                    gameElements = gameElements.filter(el => el !== portalObject.element);
+                    portalObject = null;
+                }
+                
+                const portal = document.createElement('div');
+                portal.className = 'portal';
+                
+                // Use different portal images based on level
                 if (currentLevel === 1) {
-                    if (currentScreen === 4 &amp;&amp; !activeDemons.some(demon =&gt; demon.type === 1 &amp;&amp; demon.active)) {
-                        const demonXPosition = backgroundPos + viewportWidth * 0.8;
-                        const newDemon = createDemon(0, demonXPosition);
-                        if (newDemon) activeDemons.push(newDemon);
-                    }
-                   
-                    if (currentScreen === 6 &amp;&amp; !activeDemons.some(demon =&gt; demon.type === 2 &amp;&amp; demon.active)) {
-                        const demonXPosition = backgroundPos + viewportWidth * 0.8;
-                        const newDemon = createDemon(1, demonXPosition);
-                        if (newDemon) activeDemons.push(newDemon);
-                    }
-                   
-                    if (currentScreen === 8 &amp;&amp; !activeDemons.some(demon =&gt; demon.type === 3 &amp;&amp; demon.active)) {
-                        const demonXPosition = backgroundPos + viewportWidth * 0.8;
-                        const newDemon = createDemon(2, demonXPosition);
-                        if (newDemon) activeDemons.push(newDemon);
-                    }
+                    portal.classList.add('level-one-portal');
+                } else {
+                    portal.classList.add('other-level-portal');
                 }
-                // Level 2 demons
-                else if (currentLevel === 2) {
-                    if (currentScreen === 0 &amp;&amp; !activeDemons.some(demon =&gt; demon.type === 1 &amp;&amp; demon.active)) {
-                        const demonXPosition = backgroundPos + viewportWidth * 0.8;
-                        const newDemon = createDemon(0, demonXPosition);
-                        if (newDemon) activeDemons.push(newDemon);
-                    }
-                   
-                    if (currentScreen === 6 &amp;&amp; !activeDemons.some(demon =&gt; demon.type === 2 &amp;&amp; demon.active)) {
-                        const demonXPosition = backgroundPos + viewportWidth * 0.8;
-                        const newDemon = createDemon(1, demonXPosition);
-                        if (newDemon) activeDemons.push(newDemon);
-                    }
-                   
-                    if (currentScreen === 12 &amp;&amp; !activeDemons.some(demon =&gt; demon.type === 3 &amp;&amp; demon.active)) {
-                        const demonXPosition = backgroundPos + viewportWidth * 0.8;
-                        const newDemon = createDemon(2, demonXPosition);
-                        if (newDemon) activeDemons.push(newDemon);
-                    }
-                   
-                    if (currentScreen === 18 &amp;&amp; !activeDemons.some(demon =&gt; demon.type === 4 &amp;&amp; demon.active)) {
-                        const demonXPosition = backgroundPos + viewportWidth * 0.8;
-                        const newDemon = createDemon(3, demonXPosition);
-                        if (newDemon) activeDemons.push(newDemon);
-                    }
-                }
-                // Level 3 demons with updated positions and images
-                else if (currentLevel === 3) {
-                    // New demons on specific screens for level 3
-                    if (currentScreen === 6 &amp;&amp; !activeDemons.some(demon =&gt; demon.type === 1 &amp;&amp; demon.active)) {
-                        const demonXPosition = backgroundPos + viewportWidth * 0.8;
-                        const newDemon = createDemon(0, demonXPosition);
-                        if (newDemon) activeDemons.push(newDemon);
-                    }
-                   
-                    if (currentScreen === 2 &amp;&amp; !activeDemons.some(demon =&gt; demon.type === 2 &amp;&amp; demon.active)) {
-                        const demonXPosition = backgroundPos + viewportWidth * 0.8;
-                        const newDemon = createDemon(1, demonXPosition);
-                        if (newDemon) activeDemons.push(newDemon);
-                    }
-                   
-                    if (currentScreen === 4 &amp;&amp; !activeDemons.some(demon =&gt; demon.type === 3 &amp;&amp; demon.active)) {
-                        const demonXPosition = backgroundPos + viewportWidth * 0.8;
-                        const newDemon = createDemon(2, demonXPosition);
-                        if (newDemon) activeDemons.push(newDemon);
-                    }
-                   
-                    if (currentScreen === 8 &amp;&amp; !activeDemons.some(demon =&gt; demon.type === 4 &amp;&amp; demon.active)) {
-                        const demonXPosition = backgroundPos + viewportWidth * 0.8;
-                        const newDemon = createDemon(3, demonXPosition);
-                        if (newDemon) activeDemons.push(newDemon);
-                    }
-                }
-               
-                // Update existing demons
-                updateDemons();
+                
+                portal.style.left = xPosition + 'px';
+                portal.style.bottom = '100px';
+                gameContainer.appendChild(portal);
+                gameElements.push(portal);
+                
+                portalObject = {
+                    element: portal,
+                    x: xPosition,
+                    y: 100,
+                    width: 100,
+                    height: 100,
+                    relativeX: xPosition - backgroundPos
+                };
             }
-           
-            // Update demon positions
-            function updateDemons() {
-                activeDemons.forEach(demon =&gt; {
-                    if (!demon.active) return;
-                   
-                    const relativeX = demon.x - backgroundPos;
-                    const moveTowardsPlayer = playerX &gt; relativeX ? 1 : -1;
-                   
-                    demon.x += moveTowardsPlayer * demon.speed;
-                    demon.element.style.left = (demon.x - backgroundPos) + 'px';
-                    demon.relativeX = demon.x - backgroundPos;
-                   
-                    // Flip demon based on direction
-                    if (moveTowardsPlayer &gt; 0) {
-                        demon.element.style.transform = 'scaleX(1)';
-                    } else {
-                        demon.element.style.transform = 'scaleX(-1)';
-                    }
-                   
-                    // Check for collision with player if player is not invincible
-                    if (!isInvincible &amp;&amp; isColliding(playerX, playerY, 80, 120, demon.relativeX, demon.y, demon.width, demon.height)) {
-                        handlePlayerHit();
-                    }
-                });
-            }
-           
-            // Collision detection function
-            function isColliding(x1, y1, width1, height1, x2, y2, width2, height2) {
-                return (
-                    x1 &lt; x2 + width2 &amp;&amp;
-                    x1 + width1 &gt; x2 &amp;&amp;
-                    y1 &lt; y2 + height2 &amp;&amp;
-                    y1 + height1 &gt; y2
-                );
-            }
-           
-            // Handle player being hit
-            function handlePlayerHit() {
-                if (isInvincible) return;
-               
-                lives--;
-                updateLives();
-               
-                // Make player invincible temporarily
-                isInvincible = true;
-                player.classList.add('player-invincible');
-               
-                setTimeout(() =&gt; {
-                    isInvincible = false;
-                    player.classList.remove('player-invincible');
-                }, invincibleDuration);
-            }
-           
-           // Create a portal at specific screen positions based on level
-function createPortal() {
-    // Only create portal if it doesn't exist
-    if (portalObject) return;
-   
-    const portal = document.createElement('div');
-    portal.className = 'portal';
-   
-    // Different portal for level 1
-    if (currentLevel === 1) {
-        portal.classList.add('level-one-portal');
-    } else {
-        portal.classList.add('other-level-portal');
-    }
-   
-    // Set different positions based on the current level
-    let portalXPosition;
-   
-    if (currentLevel === 1) {
-        // Portal at screen 12 for level 1
-        portalXPosition = 12 * screenWidth + (screenWidth / 2);
-    } else if (currentLevel === 2) {
-        // Portal at screen 20 for level 2
-        portalXPosition = 20 * screenWidth + (screenWidth / 2);
-    } else if (currentLevel === 3) {
-        // Portal at screen 12 for level 3
-        portalXPosition = 12 * screenWidth + (screenWidth / 2);
-    }
-   
-    portal.style.left = (portalXPosition - backgroundPos) + 'px';
-    portal.style.bottom = '100px';
-    gameContainer.appendChild(portal);
-    gameElements.push(portal);
-   
-    portalObject = {
-        element: portal,
-        x: portalXPosition,
-        active: true
-    };
-}
-           
-            // Move to the next level when player reaches portal
-            function nextLevel() {
-                clearInterval(timerInterval);
-               
-                // Remove all game elements
-                activeDemons.forEach(demon =&gt; {
+            
+            // Create demons at specific screen positions
+            function createDemonsAtScreenPositions() {
+                // Clear any existing demons
+                activeDemons.forEach(demon => {
                     if (demon.element) {
                         gameContainer.removeChild(demon.element);
+                        gameElements = gameElements.filter(el => el !== demon.element);
                     }
                 });
-               
-                if (portalObject &amp;&amp; portalObject.element) {
-                    gameContainer.removeChild(portalObject.element);
-                }
-               
                 activeDemons = [];
-                portalObject = null;
-               
-                // Create and show level complete screen
-                const levelComplete = document.createElement('div');
-                levelComplete.className = 'level-complete';
-                levelComplete.innerHTML = `
-                    &lt;h2&gt;Level ${currentLevel} Complete!&lt;/h2&gt;
-                    &lt;p&gt;Score: ${score}&lt;/p&gt;
-                    &lt;p&gt;Time Bonus: ${timeRemaining * 10}&lt;/p&gt;
-                    &lt;p&gt;Total Score: ${score + (timeRemaining * 10)}&lt;/p&gt;
-                `;
-                gameContainer.appendChild(levelComplete);
-               
-                // Update score with time bonus
-                score += timeRemaining * 10;
-                scoreDisplay.innerText = score;
-               
-                // Reset game state for next level
-                setTimeout(() =&gt; {
-                    gameContainer.removeChild(levelComplete);
-                    currentLevel++;
-                   
-                    // If reached final level, show game won screen
-                    if (currentLevel &gt; 3) {
-                        showGameWon();
-                        return;
-                    }
-                   
-                    // Reset player and game state
-                    playerX = 100;
-                    backgroundPos = 0;
-                    isJumping = false;
-                    isFalling = false;
-                    jumpHeight = 0;
-                    timeRemaining = 400;
-                   
-                    // Update level display
-                    worldDisplay.innerText = `${currentLevel}-1`;
-                   
-                    // Change background for level 2
-                    if (currentLevel === 2) {
-                        backgroundLayer.classList.add('level-two-background');
-                    }
-                    // Change background for level 3
-                    else if (currentLevel === 3) {
-                        backgroundLayer.classList.remove('level-two-background');
-                        backgroundLayer.classList.add('level-three-background');
-                    }
-                   
-                    updateBackground();
-                    createPortal();
-                   
-                    // Restart timer
-                    startTimer();
-                }, 3000);
-            }
-           
-           // Show game won screen with full-screen image
-function showGameWon() {
-    // Create or get the final image div
-    let finalImage = document.getElementById('finalImage');
-    if (!finalImage) {
-        finalImage = document.createElement('div');
-        finalImage.id = 'finalImage';
-        gameContainer.appendChild(finalImage);
-    }
-   
-    // Display the final image
-    finalImage.style.display = 'block';
-   
-    // Add a restart button on top of the image
-    const restartButton = document.createElement('button');
-    restartButton.id = 'restartButton';
-    restartButton.innerText = 'Play Again';
-    restartButton.style.position = 'fixed';
-    restartButton.style.bottom = '50px';
-    restartButton.style.left = '50%';
-    restartButton.style.transform = 'translateX(-50%)';
-    restartButton.style.padding = '15px 30px';
-    restartButton.style.fontSize = '20px';
-    restartButton.style.backgroundColor = '#4CAF50';
-    restartButton.style.color = 'white';
-    restartButton.style.border = 'none';
-    restartButton.style.borderRadius = '5px';
-    restartButton.style.cursor = 'pointer';
-    restartButton.style.zIndex = '200';
-   
-    finalImage.appendChild(restartButton);
-   
-    // Add event listener to restart button
-    restartButton.addEventListener('click', function() {
-        location.reload();
-    });
-   
-    gameLoopRunning = false;
-}
-           
-            // Game over function
-            function gameOver() {
-                clearInterval(timerInterval);
-               
-                const gameOverScreen = document.createElement('div');
-                gameOverScreen.className = 'game-over';
-                gameOverScreen.innerHTML = `
-                    &lt;h2&gt;Game Over&lt;/h2&gt;
-                    &lt;p&gt;Your Score: ${score}&lt;/p&gt;
-                    &lt;button id=&quot;restartButton&quot;&gt;Try Again&lt;/button&gt;
-                `;
-                gameContainer.appendChild(gameOverScreen);
-               
-                document.getElementById('restartButton').addEventListener('click', function() {
-                    location.reload();
-                });
-               
-                gameLoopRunning = false;
-            }
-           
-            // Start the game timer
-            function startTimer() {
-                if (timerInterval) {
-                    clearInterval(timerInterval);
+                
+                // Level 1 demons placement
+                if (currentLevel === 1) {
+                    // Screen 1 (starting area)
+                    let demon1 = createDemon(0, screenWidth * 1.5);
+                    if (demon1) activeDemons.push(demon1);
+                    
+                    // Screen 2
+                    let demon2 = createDemon(1, screenWidth * 2.5);
+                    if (demon2) activeDemons.push(demon2);
+                    
+                    // Screen 3
+                    let demon3 = createDemon(2, screenWidth * 3.5);
+                    if (demon3) activeDemons.push(demon3);
+                    
+                    // Screen 4
+                    let demon4 = createDemon(0, screenWidth * 4.5);
+                    if (demon4) activeDemons.push(demon4);
+                    
+                    // Screen 5
+                    let demon5 = createDemon(1, screenWidth * 5.5);
+                    if (demon5) activeDemons.push(demon5);
+                    
+                    // Create a portal to level 2 at screen 6
+                    createPortal(screenWidth * 6.5);
                 }
-               
-                timerInterval = setInterval(() =&gt; {
-                    timeRemaining--;
-                    timeDisplay.innerText = timeRemaining;
-                   
-                    if (timeRemaining &lt;= 0) {
-                        clearInterval(timerInterval);
-                        gameOver();
-                    }
-                }, 1000);
+                // Level 2 demons placement
+                else if (currentLevel === 2) {
+                    // More demons and different patterns for level 2
+                    let demon1 = createDemon(0, screenWidth * 1.2);
+                    if (demon1) activeDemons.push(demon1);
+                    
+                    let demon2 = createDemon(1, screenWidth * 2.3);
+                    if (demon2) activeDemons.push(demon2);
+                    
+                    let demon3 = createDemon(2, screenWidth * 3.1);
+                    if (demon3) activeDemons.push(demon3);
+                    
+                    let demon4 = createDemon(3, screenWidth * 4.2);
+                    if (demon4) activeDemons.push(demon4);
+                    
+                    let demon5 = createDemon(0, screenWidth * 5.2);
+                    if (demon5) activeDemons.push(demon5);
+                    
+                    let demon6 = createDemon(1, screenWidth * 6.1);
+                    if (demon6) activeDemons.push(demon6);
+                    
+                    // Create a portal to level 3 at screen 6.8
+                    createPortal(screenWidth * 6.8);
+                }
+                // Level 3 demons placement
+                else if (currentLevel === 3) {
+                    // Even more demons for level 3
+                    let demon1 = createDemon(0, screenWidth * 1.1);
+                    if (demon1) activeDemons.push(demon1);
+                    
+                    let demon2 = createDemon(1, screenWidth * 2.1);
+                    if (demon2) activeDemons.push(demon2);
+                    
+                    let demon3 = createDemon(2, screenWidth * 3.0);
+                    if (demon3) activeDemons.push(demon3);
+                    
+                    let demon4 = createDemon(3, screenWidth * 4.0);
+                    if (demon4) activeDemons.push(demon4);
+                    
+                    let demon5 = createDemon(0, screenWidth * 5.0);
+                    if (demon5) activeDemons.push(demon5);
+                    
+                    let demon6 = createDemon(1, screenWidth * 5.8);
+                    if (demon6) activeDemons.push(demon6);
+                    
+                    let demon7 = createDemon(2, screenWidth * 6.5);
+                    if (demon7) activeDemons.push(demon7);
+                    
+                    // Create final portal at screen 7.2
+                    createPortal(screenWidth * 7.2);
+                }
             }
-           
+            
             // Create player character
             function createPlayer() {
                 player = document.createElement('div');
                 player.id = 'player';
-                player.style.backgroundImage = &quot;url('https://i.postimg.cc/NfDdpJvP/Senza-titolo-3-20250310144624.png')&quot;;
                 player.style.left = playerX + 'px';
                 player.style.bottom = playerY + 'px';
                 gameContainer.appendChild(player);
                 gameElements.push(player);
             }
-           
-            // Handle player jumping
-            function handleJump() {
-                if (isJumping &amp;&amp; !isFalling) {
-                    jumpHeight += 5;
-                    playerY += 5;
-                   
-                    if (jumpHeight &gt;= jumpMax) {
-                        isJumping = false;
-                        isFalling = true;
-                    }
-                } else if (isFalling) {
-                    jumpHeight -= 5;
-                    playerY -= 5;
-                   
-                    if (jumpHeight &lt;= 0) {
-                        isFalling = false;
-                        playerY = 100; // Reset to ground level
-                    }
-                }
-               
-                // Update player position
-                player.style.bottom = playerY + 'px';
-            }
-           
-            // Update background position based on player movement
-            function updateBackground() {
-                // Update screen position counter
-                currentScreen = Math.floor(backgroundPos / screenWidth);
-                screenPositionDisplay.innerText = currentScreen;
-               
-                // Update background position
-                backgroundLayer.style.transform = `translateX(${-backgroundPos}px)`;
-               
-                // Update portal position if it exists
-                if (portalObject &amp;&amp; portalObject.active) {
-                    portalObject.element.style.left = (portalObject.x - backgroundPos) + 'px';
-                   
-                    // Check for portal collision
-                    if (Math.abs((portalObject.x - backgroundPos) - playerX) &lt; 50) {
-                        portalObject.active = false;
-                        nextLevel();
-                    }
-                }
-            }
-           
-            // Handle player movement
-            function handleMovement() {
-                // Initialize sprint modifier
-                let sprintModifier = keysPressed.ShiftLeft ? 1.5 : 1;
-               
-                // Fix the movement issue by making background scrolling and player movement consistent
+            
+            // Movement and controls handling
+            function handlePlayerMovement() {
+                const baseSpeed = 5;
+                const runMultiplier = 1.5;
+                const currentSpeed = keysPressed.ShiftLeft ? baseSpeed * runMultiplier : baseSpeed;
+                
+                // Handle left movement
                 if (keysPressed.ArrowLeft) {
                     facingRight = false;
                     player.style.transform = 'scaleX(-1)';
-                   
-                    // Move player left only if not at minimum position
-                    if (playerX &gt; playerMinX) {
-                        playerX -= moveSpeed * sprintModifier;
-                    } else if (backgroundPos &gt; 0) {
-                        // Scroll background right instead
-                        backgroundPos -= moveSpeed * sprintModifier;
+                    
+                    // If player is not at the left edge of screen
+                    if (playerX > playerMinX) {
+                        playerX -= currentSpeed;
+                    } 
+                    // If player is at left edge but background can still move
+                    else if (backgroundPos > 0) {
+                        backgroundPos -= currentSpeed;
+                        // Update active demons and portal positions when background moves
+                        activeDemons.forEach(demon => {
+                            demon.relativeX = demon.x - backgroundPos;
+                            demon.element.style.left = demon.relativeX + 'px';
+                        });
+                        
+                        if (portalObject) {
+                            portalObject.relativeX = portalObject.x - backgroundPos;
+                            portalObject.element.style.left = portalObject.relativeX + 'px';
+                        }
                     }
                 }
-               
+                
+                // Handle right movement
                 if (keysPressed.ArrowRight) {
                     facingRight = true;
                     player.style.transform = 'scaleX(1)';
-                   
-                    // Only move player right until reaching the center of the screen
-                    if (playerX &lt; playerMaxX) {
-                        playerX += moveSpeed * sprintModifier;
-                    } else if (backgroundPos &lt; maxBackgroundPos) {
-                        // Scroll background left instead
-                        backgroundPos += moveSpeed * sprintModifier;
-                    } else if (playerX &lt; viewportWidth - 80) {
-                        // If at the end of level, allow player to move further right
-                        playerX += moveSpeed * sprintModifier;
+                    
+                    // If player is not at the right threshold of screen
+                    if (playerX < playerMaxX) {
+                        playerX += currentSpeed;
+                    } 
+                    // If player is at right threshold but background can still move
+                    else if (backgroundPos < maxBackgroundPos) {
+                        backgroundPos += currentSpeed;
+                        // Update active demons and portal positions when background moves
+                        activeDemons.forEach(demon => {
+                            demon.relativeX = demon.x - backgroundPos;
+                            demon.element.style.left = demon.relativeX + 'px';
+                        });
+                        
+                        if (portalObject) {
+                            portalObject.relativeX = portalObject.x - backgroundPos;
+                            portalObject.element.style.left = portalObject.relativeX + 'px';
+                        }
+                    }
+                    // If player is at right threshold and background can't move anymore
+                    else {
+                        playerX += currentSpeed;
+                        // Make sure player doesn't go off-screen
+                        if (playerX > viewportWidth - 80) {
+                            playerX = viewportWidth - 80;
+                        }
                     }
                 }
-               
+                
+                // Handle jumping with Space or ArrowUp
+                if ((keysPressed.Space || keysPressed.ArrowUp) && !isJumping && !isFalling) {
+                    isJumping = true;
+                    isFalling = false;
+                    jumpHeight = 0;
+                }
+                
+                // Handle jumping physics
+                if (isJumping) {
+                    jumpHeight += 5;
+                    playerY += 10;
+                    
+                    if (jumpHeight >= jumpMax) {
+                        isJumping = false;
+                        isFalling = true;
+                    }
+                }
+                // Handle falling physics
+                else if (isFalling) {
+                    playerY -= 10;
+                    
+                    if (playerY <= 100) { // Ground level
+                        playerY = 100;
+                        isFalling = false;
+                        jumpHeight = 0;
+                    }
+                }
+                
                 // Update player position
                 player.style.left = playerX + 'px';
-               
-                // Handle jump with Space bar
-                if ((keysPressed.Space || keysPressed.ArrowUp) &amp;&amp; !isJumping &amp;&amp; !isFalling) {
-                    isJumping = true;
+                player.style.bottom = playerY + 'px';
+                
+                // Update background position
+                backgroundLayer.style.transform = `translateX(-${backgroundPos}px)`;
+                
+                // Update current screen calculation
+                currentScreen = Math.floor(backgroundPos / screenWidth);
+                screenPositionDisplay.textContent = currentScreen;
+            }
+            
+            // Check for collisions with enemies
+            function checkCollisions() {
+                if (isInvincible) return;
+                
+                const playerRect = {
+                    x: playerX,
+                    y: playerY,
+                    width: 80 * 0.7, // Reduced hitbox width
+                    height: 120 * 0.7 // Reduced hitbox height
+                };
+                
+                // Check for collisions with demons
+                activeDemons.forEach(demon => {
+                    if (!demon.active) return;
+                    
+                    const demonRect = {
+                        x: demon.relativeX,
+                        y: demon.y,
+                        width: demon.width,
+                        height: demon.height
+                    };
+                    
+                    if (isColliding(playerRect, demonRect)) {
+                        playerHit();
+                    }
+                });
+                
+                // Check for portal collision if portal exists
+                if (portalObject) {
+                    const portalRect = {
+                        x: portalObject.relativeX,
+                        y: portalObject.y,
+                        width: portalObject.width,
+                        height: portalObject.height
+                    };
+                    
+                    if (isColliding(playerRect, portalRect)) {
+                        reachedPortal();
+                    }
                 }
-               
-                // Update background based on player movement
-                updateBackground();
             }
-           
-            // Main game loop
-            function gameLoop() {
-                if (!gameLoopRunning) return;
-               
-                handleMovement();
-                handleJump();
-                manageDemons();
-               
-                requestAnimationFrame(gameLoop);
+            
+            // Collision detection helper
+            function isColliding(rect1, rect2) {
+                return rect1.x < rect2.x + rect2.width &&
+                       rect1.x + rect1.width > rect2.x &&
+                       rect1.y < rect2.y + rect2.height &&
+                       rect1.y + rect1.height > rect2.y;
             }
-           
+            
+            // Player hit by enemy
+            function playerHit() {
+                if (isInvincible) return;
+                
+                lives--;
+                updateLives();
+                
+                // Make player temporarily invincible
+                isInvincible = true;
+                player.classList.add('player-invincible');
+                
+                setTimeout(() => {
+                    isInvincible = false;
+                    player.classList.remove('player-invincible');
+                }, invincibleDuration);
+            }
+            
+            // Player reached portal
+            function reachedPortal() {
+                // Stop timer temporarily
+                clearInterval(timerInterval);
+                
+                if (currentLevel === 3) {
+                    // Player beat the game!
+                    showFinalScreen();
+                } else {
+                    // Show level complete message
+                    const levelCompleteDiv = document.createElement('div');
+                    levelCompleteDiv.className = 'level-complete';
+                    levelCompleteDiv.innerHTML = `
+                        <h2>Livello ${currentLevel} Completato!</h2>
+                        <p>Punteggio attuale: ${score}</p>
+                        <p>Vite rimaste: ${lives}</p>
+                        <p>Tempo bonus: ${timeRemaining}</p>
+                        <p>Premi ENTER per continuare</p>
+                    `;
+                    gameContainer.appendChild(levelCompleteDiv);
+                    
+                    // Add time bonus to score
+                    score += timeRemaining * 10;
+                    scoreDisplay.textContent = score;
+                    
+                    // Wait for ENTER press to start next level
+                    const enterListener = function(event) {
+                        if (event.key === 'Enter') {
+                            gameContainer.removeChild(levelCompleteDiv);
+                            document.removeEventListener('keydown', enterListener);
+                            startNextLevel();
+                        }
+                    };
+                    document.addEventListener('keydown', enterListener);
+                }
+            }
+            
+            // Show final victory screen
+            function showFinalScreen() {
+                // Display final image
+                finalImage.style.display = 'block';
+                
+                // Create victory message
+                const finalScoreDiv = document.createElement('div');
+                finalScoreDiv.className = 'game-over';
+                finalScoreDiv.innerHTML = `
+                    <h2 style="color: #4CAF50;">Hai Vinto!</h2>
+                    <p>Hai completato il viaggio attraverso l'Inferno!</p>
+                    <p>Punteggio finale: ${score + timeRemaining * 20}</p>
+                    <p>Grazie per aver giocato!</p>
+                    <button id="playAgainBtn">Gioca Ancora</button>
+                `;
+                gameContainer.appendChild(finalScoreDiv);
+                
+                // Play again button
+                document.getElementById('playAgainBtn').addEventListener('click', function() {
+                    gameContainer.removeChild(finalScoreDiv);
+                    finalImage.style.display = 'none';
+                    resetGame();
+                });
+            }
+            
+            // Start next level
+            function startNextLevel() {
+                currentLevel++;
+                timeRemaining = 400; // Reset timer
+                
+                // Reset player and background positions
+                playerX = 100;
+                playerY = 100;
+                backgroundPos = 0;
+                player.style.left = playerX + 'px';
+                player.style.bottom = playerY + 'px';
+                backgroundLayer.style.transform = `translateX(0)`;
+                
+                // Update world display
+                worldDisplay.textContent = `${currentLevel}-1`;
+                
+                // Change background based on level
+                if (currentLevel === 2) {
+                    backgroundLayer.classList.add('level-two-background');
+                } else if (currentLevel === 3) {
+                    backgroundLayer.classList.remove('level-two-background');
+                    backgroundLayer.classList.add('level-three-background');
+                }
+                
+                // Create new demons for the level
+                createDemonsAtScreenPositions();
+                
+                // Restart timer
+                timerInterval = setInterval(updateTimer, 1000);
+            }
+            
+            // Game over function
+            function gameOver() {
+                // Stop the game loop
+                cancelAnimationFrame(animationFrameId);
+                gameLoopRunning = false;
+                
+                // Stop the timer
+                clearInterval(timerInterval);
+                
+                const gameOverDiv = document.createElement('div');
+                gameOverDiv.className = 'game-over';
+                gameOverDiv.innerHTML = `
+                    <h2>Game Over</h2>
+                    <p>Punteggio: ${score}</p>
+                    <button id="restartBtn">Riprova</button>
+                `;
+                gameContainer.appendChild(gameOverDiv);
+                
+                document.getElementById('restartBtn').addEventListener('click', function() {
+                    gameContainer.removeChild(gameOverDiv);
+                    resetGame();
+                });
+            }
+            
+            // Reset the game to initial state
+            function resetGame() {
+                // Clear all game elements
+                gameElements.forEach(element => {
+                    if (element && element.parentNode) {
+                        element.parentNode.removeChild(element);
+                    }
+                });
+                gameElements = [];
+                activeDemons = [];
+                
+                // Reset game variables
+                currentLevel = 1;
+                lives = 15;
+                score = 0;
+                timeRemaining = 400;
+                playerX = 100;
+                playerY = 100;
+                backgroundPos = 0;
+                isJumping = false;
+                isFalling = false;
+                isInvincible = false;
+                portalObject = null;
+                
+                // Reset UI
+                scoreDisplay.textContent = score;
+                worldDisplay.textContent = '1-1';
+                timeDisplay.textContent = timeRemaining;
+                updateLives();
+                
+                // Reset background
+                backgroundLayer.classList.remove('level-two-background');
+                backgroundLayer.classList.remove('level-three-background');
+                
+                // Start fresh game
+                startGame();
+            }
+            
+            // Update the countdown timer
+            function updateTimer() {
+                if (timeRemaining > 0) {
+                    timeRemaining--;
+                    timeDisplay.textContent = timeRemaining;
+                } else {
+                    // Time's up - game over
+                    gameOver();
+                }
+            }
+            
             // Start the game
             function startGame() {
+                // Hide start screen
                 startScreen.style.display = 'none';
-               
+                
                 // Initialize game elements
                 createPlayer();
+                createDemonsAtScreenPositions();
                 initLives();
-                createPortal();
-               
-                // Set world display
-                worldDisplay.innerText = '1-1';
-               
+                
                 // Start timer
-                startTimer();
-               
+                timerInterval = setInterval(updateTimer, 1000);
+                
                 // Start game loop
-                gameLoopRunning = true;
-                gameLoop();
+                if (!gameLoopRunning) {
+                    gameLoopRunning = true;
+                    gameLoop();
+                }
             }
-           
-            // Handle sound toggle
-            soundButton.addEventListener('click', function() {
-                const isMuted = soundButton.textContent === '🔇';
-                soundButton.textContent = isMuted ? '🔊' : '🔇';
-                // Add actual sound control here
-            });
-           
-            // Initialize keyboard listeners
+            
+            // Main game loop
+            function gameLoop() {
+                handlePlayerMovement();
+                checkCollisions();
+                
+                // Request next animation frame
+                animationFrameId = requestAnimationFrame(gameLoop);
+            }
+            
+            // Initialize keyboard and mobile touch controls
             setupKeyboardListeners();
+            
+            // Sound toggle
+            let soundOn = true;
+            soundButton.addEventListener('click', function() {
+                soundOn = !soundOn;
+                soundButton.textContent = soundOn ? '🔊' : '🔇';
+                // Additional sound logic would go here if audio was implemented
+            });
+            
+            // Handle window resize
+            window.addEventListener('resize', function() {
+                viewportWidth = window.innerWidth;
+                screenWidth = viewportWidth;
+                playerMaxX = viewportWidth / 2;
+                maxBackgroundPos = levelWidth - viewportWidth;
+                
+                // Ensure player stays in bounds after resize
+                if (playerX > viewportWidth - 80) {
+                    playerX = viewportWidth - 80;
+                    player.style.left = playerX + 'px';
+                }
+            });
         });
-    &lt;/script&gt;
-&lt;/body&gt;
-&lt;/html&gt;</pre>
+    </script>
 </body>
 </html>
